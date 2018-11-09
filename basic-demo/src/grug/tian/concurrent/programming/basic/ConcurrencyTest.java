@@ -1,5 +1,8 @@
 package grug.tian.concurrent.programming.basic;
 
+/**
+ * 该示例演示了上下文切换引发的耗时大于计算本身耗时
+ */
 public class ConcurrencyTest {
     private static final long count = 100000L; //循环次数较小的情况下，并发执行更加耗时
 
@@ -23,6 +26,7 @@ public class ConcurrencyTest {
         for (long i = 0; i < count; i++) {
             b++;
         }
+        //此处耗时为 上下文切换耗时 + b累加耗时
         long duration = System.currentTimeMillis() - start;
 
         thread.join(); //等待子线程执行完毕
