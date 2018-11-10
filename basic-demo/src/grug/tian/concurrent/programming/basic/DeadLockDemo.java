@@ -2,6 +2,11 @@ package grug.tian.concurrent.programming.basic;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 演示死锁
+ * jps 查看当前java进程
+ * jstack 查看Java进程的线程信息
+ */
 public class DeadLockDemo {
     private static final String lockA = "A";
     private static final String lockB = "B";
