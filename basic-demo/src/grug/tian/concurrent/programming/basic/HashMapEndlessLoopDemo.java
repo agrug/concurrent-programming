@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * HashMap线程不安全示例<br>
+ * HashMap线程不安全示例
  * ConcurrentHashMap线程安全示例
  *
  * @author Grug.Tian
@@ -34,7 +34,8 @@ public class HashMapEndlessLoopDemo {
     hashMapPool.awaitTermination(10, TimeUnit.SECONDS);
 
     //观察此处打印的keySet长度和put次数的差异
-    System.out.println("HashMap put count: " + PUT_COUNT + ", map keySet size: " + map.keySet().size());
+    System.out
+        .println("HashMap put count: " + PUT_COUNT + ", map keySet size: " + map.keySet().size());
   }
 
   private static void concurrentHashMapConcurrentPut() throws InterruptedException {
@@ -46,6 +47,7 @@ public class HashMapEndlessLoopDemo {
     concurrentHashMapPool.awaitTermination(10, TimeUnit.SECONDS);
 
     //观察此处打印的keySet长度和put次数的差异
-    System.out.println("ConcurrentHashMap put count: " + PUT_COUNT + ", map keySet size: " + map.keySet().size());
+    System.out.println(
+        "ConcurrentHashMap put count: " + PUT_COUNT + ", map keySet size: " + map.keySet().size());
   }
 }

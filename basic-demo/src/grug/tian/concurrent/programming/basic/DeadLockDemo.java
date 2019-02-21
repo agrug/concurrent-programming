@@ -3,46 +3,45 @@ package grug.tian.concurrent.programming.basic;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 演示死锁
- * jps 查看当前java进程
- * jstack 查看Java进程的线程信息
+ * 演示死锁 jps 查看当前java进程 jstack 查看Java进程的线程信息
  */
 public class DeadLockDemo {
-    private static final String lockA = "A";
-    private static final String lockB = "B";
 
-    private static void deadLock() {
-        Thread thread1 = new Thread(() -> {
-            synchronized (lockA) {
-                try {
-                    TimeUnit.SECONDS.sleep(1L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                synchronized (lockB) {
-                    System.out.println("thread1 finish");
-                }
-            }
-        }, "lock 1 thread");
+  private static final String lockA = "A";
+  private static final String lockB = "B";
 
-        Thread thread2 = new Thread(() -> {
-            synchronized (lockB) {
-                try {
-                    TimeUnit.SECONDS.sleep(1L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                synchronized (lockA) {
-                    System.out.println("thread2 finish");
-                }
-            }
-        }, "lock 2 thread");
+  private static void deadLock() {
+    Thread thread1 = new Thread(() -> {
+      synchronized (lockA) {
+        try {
+          TimeUnit.SECONDS.sleep(1L);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+        synchronized (lockB) {
+          System.out.println("thread1 finish");
+        }
+      }
+    }, "lock 1 thread");
 
-        thread1.start();
-        thread2.start();
-    }
+    Thread thread2 = new Thread(() -> {
+      synchronized (lockB) {
+        try {
+          TimeUnit.SECONDS.sleep(1L);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+        synchronized (lockA) {
+          System.out.println("thread2 finish");
+        }
+      }
+    }, "lock 2 thread");
 
-    public static void main(String[] args) {
-        deadLock();
-    }
+    thread1.start();
+    thread2.start();
+  }
+
+  public static void main(String[] args) {
+    deadLock();
+  }
 }
