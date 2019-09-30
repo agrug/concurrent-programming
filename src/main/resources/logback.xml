@@ -1,7 +1,7 @@
 <configuration>
   <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger:%L ---> %msg%n%n</pattern>
+      <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger:%L ---> %msg%n</pattern>
     </encoder>
   </appender>
 

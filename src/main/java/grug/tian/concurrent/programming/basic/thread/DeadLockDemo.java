@@ -1,4 +1,4 @@
-package grug.tian.concurrent.programming.basic;
+package grug.tian.concurrent.programming.basic.thread;
 
 import java.util.concurrent.TimeUnit;
 
@@ -7,31 +7,31 @@ import java.util.concurrent.TimeUnit;
  */
 public class DeadLockDemo {
 
-  private static final String lockA = "A";
-  private static final String lockB = "B";
+  private static final String LOCK_A = "A";
+  private static final String LOCK_B = "B";
 
   private static void deadLock() {
     Thread thread1 = new Thread(() -> {
-      synchronized (lockA) {
+      synchronized (LOCK_A) {
         try {
           TimeUnit.SECONDS.sleep(1L);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
-        synchronized (lockB) {
+        synchronized (LOCK_B) {
           System.out.println("thread1 finish");
         }
       }
     }, "lock 1 thread");
 
     Thread thread2 = new Thread(() -> {
-      synchronized (lockB) {
+      synchronized (LOCK_B) {
         try {
           TimeUnit.SECONDS.sleep(1L);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
-        synchronized (lockA) {
+        synchronized (LOCK_A) {
           System.out.println("thread2 finish");
         }
       }

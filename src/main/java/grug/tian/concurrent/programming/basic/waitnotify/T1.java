@@ -1,4 +1,4 @@
-package grug.tian.concurrent.programming.basic.notify;
+package grug.tian.concurrent.programming.basic.waitnotify;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,16 +11,16 @@ public class T1 extends Thread {
 
   @Override
   public void run() {
-    synchronized (NotifyDemo.getLockObj()) {
+    synchronized (WaitNotifyDemo.getLockObj()) {
       log.info("T1线程获取到锁，start");
       try {
-        System.out.println("T1线程交出锁");
-        NotifyDemo.getLockObj().wait();
+        log.info("T1线程wait(), 交出锁");
+        WaitNotifyDemo.getLockObj().wait();
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
-      System.out.println("T1线程重新获取到锁");
-      System.out.println("T1线程end");
+      log.info("T1线程重新获取到锁");
+      log.info("T1线程end");
     }
 
   }

@@ -1,4 +1,4 @@
-package grug.tian.concurrent.programming.basic;
+package grug.tian.concurrent.programming.basic.thread;
 
 import java.util.HashMap;
 import java.util.UUID;

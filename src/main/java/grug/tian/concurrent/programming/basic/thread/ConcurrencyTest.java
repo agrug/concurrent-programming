@@ -1,4 +1,4 @@
-package grug.tian.concurrent.programming.basic;
+package grug.tian.concurrent.programming.basic.thread;
 
 /**
  * 该示例演示了上下文切换引发的耗时大于计算本身耗时
