@@ -5,7 +5,8 @@ package grug.tian.concurrent.programming.basic.thread;
  */
 public class ConcurrencyTest {
 
-  private static final long count = 100000L; //循环次数较小的情况下，并发执行更加耗时
+  /** 循环次数较小的情况下，并发执行更加耗时 */
+  private static final long COUNT = 100000L;
 
   public static void main(String[] args) throws InterruptedException {
     concurrency();
@@ -17,14 +18,14 @@ public class ConcurrencyTest {
 
     Thread thread = new Thread(() -> {
       long a = 0L;
-      for (long i = 0; i < count; i++) {
+      for (long i = 0; i < COUNT; i++) {
         a += 5;
       }
     });
     thread.start();
 
     long b = 0L;
-    for (long i = 0; i < count; i++) {
+    for (long i = 0; i < COUNT; i++) {
       b++;
     }
     //此处耗时为 上下文切换耗时 + b累加耗时
@@ -38,12 +39,12 @@ public class ConcurrencyTest {
     long start = System.currentTimeMillis();
 
     long a = 0L;
-    for (long i = 0; i < count; i++) {
+    for (long i = 0; i < COUNT; i++) {
       a += 5;
     }
 
     long b = 0;
-    for (long i = 0; i < count; i++) {
+    for (long i = 0; i < COUNT; i++) {
       b++;
     }
     long duration = System.currentTimeMillis() - start;
