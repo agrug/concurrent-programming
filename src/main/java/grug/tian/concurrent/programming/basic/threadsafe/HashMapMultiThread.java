@@ -1,4 +1,4 @@
-package grug.tian.concurrent.programming.basic.thread;
+package grug.tian.concurrent.programming.basic.threadsafe;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author Grug.Tian
  * @date 2018/11/14 10:00 PM
  */
-public class HashMapEndlessLoopDemo {
+public class HashMapMultiThread {
 
   private static final int PUT_COUNT = 10000;
   private static ExecutorService hashMapPool = Executors.newFixedThreadPool(200);
